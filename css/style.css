@@ -155,7 +155,7 @@ body {
 
 .ball.menu {
     background-color: #07e4c6;
-    z-index: 10;
+    z-index: 9;
     cursor: pointer;
     visibility: visible;
     transform: rotate(45deg);
