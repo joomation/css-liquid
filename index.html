@@ -34,12 +34,10 @@
         </a>
     </div>
     <div class="liquid-wrap">
-        <div class="wrapper">
-            <div class="toggle" onclick="toggleClass(this,event)"></div>
-            <div class="bar"></div>
-        </div>
         <div class="wrapper ball-wrap">
             <div class="ball menu" onclick="simpleToggle(this)"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
             <div class="ball"></div>
             <div class="ball"></div>
         </div>
@@ -48,7 +46,7 @@
     <svg>
         <defs>
             <filter id="filter">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"></feGaussianBlur>
+                <feGaussianBlur in="SourceGraphic" stdDeviation="15" result="blur"></feGaussianBlur>
                 <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 26 -7" result="goo"></feColorMatrix>
                 <feBlend in="SourceGraphic" in2="goo"></feBlend>
             </filter>
@@ -57,37 +55,6 @@
     <script>
         function simpleToggle(target){
             target.parentNode.classList.toggle('active');
-        }
-        function toggleClass(target, e) {
-            var element = e.currentTarget;
-            element.parentNode.classList.add('scale')
-            element.classList.toggle('active');
-            secondAction(element);
-        }
-
-        function secondAction(element) {
-            var parent = element.parentNode;
-            one(element, "transitionend", handler.bind(this, parent));
-
-        }
-
-        function handler(element) {
-            if (element.classList.contains('scale')) {
-                element.classList.remove('scale')
-            } else {
-                element.classList.add('scale')
-            }
-
-        }
-        // one event
-        function one(node, type, response) {
-            node.addEventListener(type, function (e) {
-                // remove event
-                e.target.removeEventListener(e.type, arguments.callee);
-                // call handler
-                return response(e);
-            });
-
         }
     </script>
 </body>
