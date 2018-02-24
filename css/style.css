@@ -79,11 +79,12 @@ body {
 
 .wrapper {
     position: relative;
-    filter: url('#filter');
+    filter: url('#goo');
 }
 .ball-wrap {
-    height: 70px;
+    height: 80px;
     margin: 50px auto;
+    position: relative;
 }
 
 .ball {
@@ -93,19 +94,21 @@ body {
     left: 0;
     right: 0;
     margin: auto;
-    filter: url('#filter');
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     background-color: #0de4c6;
     background-repeat: no-repeat;
-    background-size: 60% 60%;
-    background-position: 50% 50%;
+    background-size: 50%,50%;
+    background-position: 50%,50%;
     visibility: hidden;
-    transition: all 0.5s ease;
+    transition: all 1s cubic-bezier(0.77, 0.07, 0.12, 1.27);
+    -webkit-transition: all 1s cubic-bezier(0.77, 0.07, 0.12, 1.27);
     cursor: pointer;
 }
-
+.active .ball {
+    visibility: visible;
+}
 .ball.menu {
     background-color: #07e4c6;
     z-index: 9;
@@ -119,19 +122,27 @@ body {
 .ball.menu:after {
     content: "";
     position: absolute;
-    top: 23px;
-    left: 10px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     width: 30px;
     height: 3px;
     display: inline-block;
     background-color: #fff;
-    transition: all 0.3 ease-out;
+    margin: auto;
+    transition:all 0.4s;
+    border-radius: 10px;
 }
 
 .active .ball.menu {
     transform: rotate(270deg);
+    background-color: #fff;
 }
-
+.active .ball.menu:before,
+.active .ball.menu:after{
+    background-color: #0ee4c6;
+}
 .ball.menu:before {
     transform: rotate(45deg);
 }
@@ -140,32 +151,26 @@ body {
     transform: rotate(-45deg);
 }
 
-.active .ball {
-    visibility: visible;
-}
+
 
 .active .ball:nth-child(2) {
     transform: translateX(-75px) scale(0.8);
-    background-color: #fff;
     z-index: 9;
     background-image:url(../images/icon-modify.svg);
 }
 
 .active .ball:nth-child(3) {
     transform: translateX(75px) scale(0.8);
-    background-color: #ffffff;
     z-index: 9;
     background-image:url(../images/icon-remove.svg);
 }
 .active .ball:nth-child(4) {
     transform: translateX(135px) scale(0.5);
-    background-color: rgb(255, 255, 255);
     transition-delay: 0.1s;
     z-index: 8;
 }
 .active .ball:nth-child(5) {
     transform: translateX(-135px) scale(0.5);
-    background-color: #ffffff;
     transition-delay: 0.1s;
     z-index: 8;
 }
